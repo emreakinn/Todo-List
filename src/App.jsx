@@ -48,6 +48,7 @@ function App() {
       setTodos(uptadeTodos)
       setEditTodoIndex(null)
       setEditTodoValue('')
+      setError('')
     } else {
       setError('Boş bırakılamaz!')
     }

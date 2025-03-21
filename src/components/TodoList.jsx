@@ -30,9 +30,10 @@ function TodoList({ todos, handleRemoveTodo, editTodoIndex, error, handleComplat
                                 <div className='w-4/6 flex items-center gap-5'>
                                     <div
                                         style={{
-                                            backgroundColor: todo.complated ? '#4CAF50' : ''
+                                            backgroundColor: todo.complated ? '#4CAF50' : '',
+                                            wordBreak: 'break-word',
                                         }}
-                                        className='w-full text-start break-words border-2 border-cyan-700 rounded-lg p-2'>
+                                        className='w-full text-start border-2 border-cyan-700 rounded-lg p-2'>
                                         {todo.text}
                                     </div>
                                     <button
