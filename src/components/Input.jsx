@@ -12,7 +12,7 @@ function Input({ todo, setTodo, handleAddTodo }) {
             />
             <button
                 onClick={handleAddTodo}
-                className='w-1/6 border-2 border-cyan-700 rounded-lg p-2 cursor-pointer'
+                className='w-1/6 border-2 outline-none border-cyan-700 rounded-lg p-2 cursor-pointer'
             >To-do Ekle</button>
         </div>
     )

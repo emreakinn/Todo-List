@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { use, useState } from 'react'
 import './App.css'
 import Input from './components/Input'
 import TodoList from './components/TodoList'
@@ -7,6 +7,8 @@ function App() {
 
   const [todos, setTodos] = useState([])
   const [todo, setTodo] = useState('')
+  const [editTodoIndex, setEditTodoIndex] = useState(null)
+  const [editTodoValue, setEditTodoValue] = useState('')
 
   const handleAddTodo = () => {
     if (todo !== '') {
@@ -19,12 +21,35 @@ function App() {
     setTodos([...todos.filter((todo) => todo !== tod)])
   }
 
+  const handleEditClick = (index) => {
+    setEditTodoIndex(index)
+    setEditTodoValue(todos[index])
+    setEditTodoValue('')
+  }
+
+  const handleUptadeTodo = (index) => {
+    const uptadeTodos = [...todos]
+    uptadeTodos[index] = editTodoValue
+    setTodos(uptadeTodos)
+    setEditTodoIndex(null)
+    setEditTodoValue('')
+  }
+
   return (
-    <div className='w-full h-[100vh] flex justify-center text-white'>
+    <div className='w-full h-[100vh] flex justify-center text-white bg-cyan-500'>
       <div className='w-6/12 bg-cyan-900 flex flex-col text-center pt-5 gap-5'>
         <h1 className='text-4xl'>To-Do List</h1>
         <Input todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
-        <TodoList todos={todos} handleRemoveTodo={handleRemoveTodo} />
+        <TodoList
+          todos={todos}
+          handleRemoveTodo={handleRemoveTodo}
+          editTodoIndex={editTodoIndex}
+          setEditTodoIndex={setEditTodoIndex}
+          editTodoValue={editTodoValue}
+          setEditTodoValue={setEditTodoValue}
+          handleEditClick={handleEditClick}
+          handleUptadeTodo={handleUptadeTodo}
+        />
       </div>
     </div>
   )
