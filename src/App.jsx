@@ -9,12 +9,23 @@ function App() {
   const [todo, setTodo] = useState('')
   const [editTodoIndex, setEditTodoIndex] = useState(null)
   const [editTodoValue, setEditTodoValue] = useState('')
+  const [error, setError] = useState('')
 
   const handleAddTodo = () => {
     if (todo !== '') {
-      setTodos([...todos, todo])
+      setTodos([...todos, {
+        id: todos.length + 1,
+        text: todo,
+        isCompleted: false
+      }])
       setTodo('')
     }
+  }
+
+  const handleComplatedTodo = (id) => {
+    setTodos(todos.map(todo =>
+      todo.id === id ? { ...todo, complated: !todo.complated } : todo
+    ))
   }
 
   const handleRemoveTodo = (tod) => {
@@ -28,11 +39,18 @@ function App() {
   }
 
   const handleUptadeTodo = (index) => {
-    const uptadeTodos = [...todos]
-    uptadeTodos[index] = editTodoValue
-    setTodos(uptadeTodos)
-    setEditTodoIndex(null)
-    setEditTodoValue('')
+    if (editTodoValue !== '') {
+      const uptadeTodos = [...todos]
+      uptadeTodos[index] = {
+        ...uptadeTodos[index],
+        text: editTodoValue
+      }
+      setTodos(uptadeTodos)
+      setEditTodoIndex(null)
+      setEditTodoValue('')
+    } else {
+      setError('Boş bırakılamaz!')
+    }
   }
 
   return (
@@ -44,11 +62,12 @@ function App() {
           todos={todos}
           handleRemoveTodo={handleRemoveTodo}
           editTodoIndex={editTodoIndex}
-          setEditTodoIndex={setEditTodoIndex}
+          handleComplatedTodo={handleComplatedTodo}
           editTodoValue={editTodoValue}
           setEditTodoValue={setEditTodoValue}
           handleEditClick={handleEditClick}
           handleUptadeTodo={handleUptadeTodo}
+          error={error}
         />
       </div>
     </div>
