@@ -50,13 +50,13 @@ function App() {
       setEditTodoValue('')
       setError('')
     } else {
-      setError('Boş bırakılamaz!')
+      setError('Todo Gir!')
     }
   }
 
   return (
-    <div className='w-full h-[100vh] flex justify-center text-white bg-cyan-500'>
-      <div className='w-6/12 bg-cyan-900 flex flex-col text-center pt-5 gap-5'>
+    <div className='w-full min-h-screen flex justify-center text-white bg-cyan-500'>
+      <div className='xl:w-6/12 w-full bg-cyan-900 flex flex-col text-center pt-5 gap-5'>
         <h1 className='text-4xl'>To-Do List</h1>
         <Input todo={todo} setTodo={setTodo} handleAddTodo={handleAddTodo} />
         <TodoList

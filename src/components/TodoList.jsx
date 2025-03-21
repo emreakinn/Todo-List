@@ -22,8 +22,9 @@ function TodoList({ todos, handleRemoveTodo, editTodoIndex, error, handleComplat
                                     )}
                                     <button
                                         onClick={() => handleUptadeTodo(index)}
-                                        className='w-1/6 border-2 outline-none border-cyan-700 rounded-lg p-2 cursor-pointer'>
-                                        Onayla
+                                        className='xl:w-2/6 w-1/6 border-2 outline-none border-cyan-700 rounded-lg p-2 cursor-pointer'>
+                                        <span className="block lg:hidden text-md">Onay</span>
+                                        <span className="hidden lg:block text-md">Onayla</span>
                                     </button>
                                 </div>
                             ) : (
@@ -38,8 +39,9 @@ function TodoList({ todos, handleRemoveTodo, editTodoIndex, error, handleComplat
                                     </div>
                                     <button
                                         onClick={() => handleEditClick(index)}
-                                        className='w-1/6 border-2 outline-none border-cyan-700 rounded-lg p-2 cursor-pointer'>
-                                        Düzenle
+                                        className='xl:w-2/6 w-1/6 border-2 outline-none border-cyan-700 rounded-lg p-2 cursor-pointer'>
+                                        <span className="block lg:hidden text-md">Düz</span>
+                                        <span className="hidden lg:block text-md">Düzenle</span>
                                     </button>
                                 </div>
                             )
